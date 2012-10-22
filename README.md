@@ -19,7 +19,8 @@
 	see the supplied index.html in the Example folder.
 	
 ## More Info
-	GAPlugin includes libraries from Google Analytics SDK for iOS and for Android. Use of those libraries is subject to the following TOS;
-	[Google Analytics ToS](http://www.google.com/analytics/terms/us.html)
 	
-	Also take a look at [Google Analytics Developer Guides](https://developers.google.com/analytics/devguides/)
+GAPlugin includes libraries from Google Analytics SDK for iOS and for Android.
+Use of those libraries is subject to [Google Analytics Terms of Service](http://www.google.com/analytics/terms/us.html)
+	
+Also take a look at [Google Analytics Developer Guides](https://developers.google.com/analytics/devguides/)
