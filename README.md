@@ -17,3 +17,10 @@
 	
 ## Usage:
 	see the supplied index.html in the Example folder.
+	
+## More Info
+	GAPlugin includes libraries from Google Analytics SDK for iOS and for Android. Use of those libraries is subject to the following TOS;
+		http://www.google.com/analytics/terms/us.html
+	
+	Google Analytics Developer Guides can be found at;
+		https://developers.google.com/analytics/devguides/
