@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="com.adobe.plugins.GAPlugin"
+    version="1.0.0">
+
+    <name>GAPlugin</name>
+    
+    <asset src="www/GAPlugin.js" target="GAPlugin.js" />
+    
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="plugins">
+            <plugin name="GAPlugin" value="com.adobe.plugins.GAPlugin"/>
+        </config-file>
+
+        <source-file src="src/android/GAPlugin.java"
+                target-dir="src/com/adobe/plugins" />
+        <source-file src="src/android/libGoogleAnalytics.jar"
+                target-dir="libs" />
+    </platform>
+    
+    
+    <!-- ios -->
+    <platform name="ios">
+        <plugins-plist key="GAPlugin"
+                    string="GAPlugin" />
+        <source-file src="GANTracker.h" />
+        <source-file src="GAPlugin.h" />
+        <source-file src="GAPlugin.m" />
+        <source-file src="libGoogleAnalytics.a" />
+        <framework src="libsqlite3.dylib" />
+        <framework src="CFNetwork.framework" />
+    </platform>
+</plugin>

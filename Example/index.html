@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta name="viewport" content="width=320; user-scalable=no" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>PhoneGap</title>
+		<link rel="stylesheet" href="master.css" type="text/css" media="screen" title="no title">
+		<script type="text/javascript" charset="utf-8" src="cordova-1.5.0.js"></script>
+		<script type="text/javascript" src="GAPlugin.js"></script>
+		<script type="text/javascript">
+			var gaPlugin;
+		
+			function initialize() {
+    			document.addEventListener("deviceready", onDeviceReady, true);
+			}
+		
+			function onDeviceReady() {
+				gaPlugin = window.plugins.gaPlugin;        
+        
+				navigator.notification.confirm('GA_PLUGIN would like your permission to collect usage data. No personal or user identifiable data will be collected.', permissionCallback, 'Attention', 'Allow,Deny');
+			}
+		
+			function permissionCallback (button) {
+				if (button === 1)
+					gaPlugin.init(nativePluginResultHandler, nativePluginErrorHandler, "UA-35348216-1", 10);
+			}
+
+			function nativePluginResultHandler (result) {
+				//alert('nativePluginResultHandler - '+result);
+				console.log('nativePluginResultHandler: '+result);
+
+			}
+        
+			function nativePluginErrorHandler (error) {
+				//alert('nativePluginErrorHandler - '+error);
+				console.log('nativePluginErrorHandler: '+error);
+			}
+			
+			function TrackButtonClicked() {
+				gaPlugin.trackEvent( nativePluginResultHandler, nativePluginErrorHandler, "Button", "Click", "event only", 1);
+			}
+        
+			function VariableButtonClicked() {
+				gaPlugin.setVariable( nativePluginResultHandler, nativePluginErrorHandler, "favoriteColor", "Purple", 1);
+				gaPlugin.trackEvent( nativePluginResultHandler, nativePluginErrorHandler, "Button", "Click", "event with variable", 2);
+			}
+        
+			function PageButtonClicked() {
+				gaPlugin.trackPage( nativePluginResultHandler, nativePluginErrorHandler, "some.url.com");
+			}
+			
+			function goingAway() {
+				gaPlugin.exit(nativePluginResultHandler, nativePluginErrorHandler);
+			}
+			
+		</script>
+
+  </head>
+  <body onload="initialize();" onunload="goingAway();" id="stage" class="theme">
+    <h1>Test Google Analytics Plugin</h1>
+    <div class="space"></div>
+    <div>
+    	<a href="#" class="btn large" onclick="TrackButtonClicked();">Track Event</a>
+    	<a href="#" class="btn large" onclick="VariableButtonClicked();">Track Event with Variable</a>
+    	<a href="#" class="btn large" onclick="PageButtonClicked();">Track Page</a>
+    </div>
+  </body>
+</html>
