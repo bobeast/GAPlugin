@@ -39,7 +39,7 @@ Init takes 4 arguments;
 		between upload of metrics. When metics are logged, they are enqued
 		and are sent out in batches based on this value. You'll want to
 		avoid setting this value too low, to limit the overhead of sending data.
-Ex:
+Ex;
 	gaPlugin.init(successHandler, errorHandler, "UA-12345678-1", 10);
 	
 To track an event, call (oddly enough) trackEvent().
@@ -53,7 +53,7 @@ trackEvent takes 6 arguments;
 	6)	eventLabel - A label that describes the event such as Button title or Menu Item name.
 	7)	eventValue - An application defined integer value that can mean whatever you want it to mean.
 	
-Ex:		
+Ex;		
 	gaPlugin.trackEvent( nativePluginResultHandler, nativePluginErrorHandler, "Button", "Click", "event only", 1);
 
 TrackEvent covers most of what you need, but there may be cases where you want to pass arbitrary data.
@@ -69,7 +69,7 @@ setVariable() accepts 5 arguments;
 	4)	value - Arbitrary string data associated with the key and index.
 	5)	index - the numerical index representing on of your variable slots (1-4 or 1-50, depending on the account type)
 
-Ex:
+Ex;
 	gaPlugin.setVariable( nativePluginResultHandler, nativePluginErrorHandler, "favoriteColor", "Purple", 1);
 	
 In addition to events and variables, you can also log page visits with trackPage(). Unlike variables, howver, page hits do not require
@@ -80,7 +80,7 @@ trackPage() takes 3 arguments;
 	2)	errorHandler - a function that will be called on error.
 	3)	url - The url of the page hit you are logging.
 
-Ex:
+Ex;
 	gaPlugin.trackPage( nativePluginResultHandler, nativePluginErrorHandler, "some.url.com");
 	
 Finally, when your app shuts down, you'll want to cleanup after yourselve by calling exit();
@@ -88,7 +88,7 @@ exit() accepts 2 arguments;
 
 	1)	resultHandler - a function that will be called on success
 	2)	errorHandler - a function that will be called on error.
-Ex:		
+Ex;		
 	gaPlugin.exit(nativePluginResultHandler, nativePluginErrorHandler);
 	
 This package includes an Example folder containing an index.html file showing how all of this fits together.
@@ -101,11 +101,11 @@ Use of those libraries is subject to [Google Analytics Terms of Service](http://
 	
 Also take a look at [Google Analytics Developer Guides](https://developers.google.com/analytics/devguides/)
 
-## Licence ##
+## License ##
 
 The MIT License
 
-Copyright (c) 2010 Matt Kane
+Copyright (c) 2012 Bob Easterday, Adobe Systems
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
