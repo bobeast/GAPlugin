@@ -5,7 +5,7 @@
 
 ## Installation:
 
-Follows the [Cordova Plugin spec](https://github.com/alunny/cordova-plugin-spec), abd it works with [Pluginstall](https://github.com/alunny/pluginstall).
+Follows the [Cordova Plugin spec](https://github.com/alunny/cordova-plugin-spec), and it works with [Pluginstall](https://github.com/alunny/pluginstall).
 
 To install it to your app, simply execute pluginstall as follows:
 
