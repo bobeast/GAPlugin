@@ -2,7 +2,7 @@
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="com.adobe.plugins.GAPlugin"
-    version="1.0.0">
+    version="1.0.1">
 
     <name>GAPlugin</name>
     
@@ -23,8 +23,14 @@
     
     <!-- ios -->
     <platform name="ios">
-        <plugins-plist key="GAPlugin"
-                    string="GAPlugin" />
+		<!-- Cordova < 2.3 -->
+        <plugins-plist key="GAPlugin" string="GAPlugin" />
+                    
+		<!-- Cordova >= 2.3 -->
+		<config-file target="config.xml" parent="/cordova/plugins">
+			<plugin name="GAPlugin" value="GAPlugin"/>
+		</config-file>  
+                    
         <source-file src="GANTracker.h" />
         <source-file src="GAPlugin.h" />
         <source-file src="GAPlugin.m" />
