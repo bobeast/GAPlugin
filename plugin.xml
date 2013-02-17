@@ -26,6 +26,7 @@
         <plugins-plist key="GAPlugin"
                     string="GAPlugin" />
         <source-file src="GANTracker.h" />
+        <source-file src="GANTrackerStub.m" />
         <source-file src="GAPlugin.h" />
         <source-file src="GAPlugin.m" />
         <source-file src="libGoogleAnalytics.a" />
