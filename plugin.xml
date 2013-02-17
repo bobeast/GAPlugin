@@ -28,7 +28,7 @@
         <source-file src="GANTracker.h" />
         <source-file src="GAPlugin.h" />
         <source-file src="GAPlugin.m" />
-        <source-file src="libGoogleAnalytics.a" />
+        <framework src="libGoogleAnalytics.a" />
         <framework src="libsqlite3.dylib" />
         <framework src="CFNetwork.framework" />
     </platform>
