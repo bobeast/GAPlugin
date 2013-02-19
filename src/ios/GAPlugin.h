@@ -7,9 +7,9 @@
 //
 
 #import <Cordova/CDV.h>
-#import "GANTracker.h"
+#import "GAI.h"
 
-@interface GAPlugin : CDVPlugin <GANTrackerDelegate>
+@interface GAPlugin : CDVPlugin
 {
     BOOL    inited;
 }
