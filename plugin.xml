@@ -23,13 +23,27 @@
     
     <!-- ios -->
     <platform name="ios">
+        
+        <!-- Cordova 2.3.0 -->
+        <config-file target="config.xml" parent="/cordova/plugins">
+                <plugin name="GAPlugin"
+                    value="GAPlugin"/>
+        </config-file>
+        
+        <!-- Cordova 2.2.0 -->
         <plugins-plist key="GAPlugin"
                     string="GAPlugin" />
-        <source-file src="GANTracker.h" />
+                    
+        <source-file src="GAI.h" />
+        <source-file src="GAITrackedViewController.h" />
+        <source-file src="GAITracker.h" />
+        <source-file src="GAITransaction.h" />
+        <source-file src="GAITransactionItem.h" />
         <source-file src="GAPlugin.h" />
         <source-file src="GAPlugin.m" />
-        <source-file src="libGoogleAnalytics.a" />
-        <framework src="libsqlite3.dylib" />
+        <framework src="libGoogleAnalytics.a" />
+        <framework src="CoreData.framework" />
+        <framework src="SystemConfiguration.framework" />
         <framework src="CFNetwork.framework" />
     </platform>
 </plugin>
