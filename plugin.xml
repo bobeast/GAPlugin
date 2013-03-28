@@ -2,7 +2,7 @@
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="com.adobe.plugins.GAPlugin"
-    version="1.0.1">
+    version="1.0.2">
 
     <name>GAPlugin</name>
     
@@ -27,7 +27,7 @@
         <plugins-plist key="GAPlugin" string="GAPlugin" />
                     
 		<!-- Cordova >= 2.3 -->
-		<config-file target="config.xml" parent="/cordova/plugins">
+		<config-file target="config.xml" parent="plugins">
 			<plugin name="GAPlugin" value="GAPlugin"/>
 		</config-file>  
                     
