@@ -85,7 +85,7 @@ trackPage() takes 3 arguments;
 Ex;
 	gaPlugin.trackPage( nativePluginResultHandler, nativePluginErrorHandler, "some.url.com");
 	
-Finally, when your app shuts down, you'll want to cleanup after yourselve by calling exit();
+Finally, when your app shuts down, you'll want to cleanup after yourself by calling exit();
 exit() accepts 2 arguments;
 
 	1)	resultHandler - a function that will be called on success
