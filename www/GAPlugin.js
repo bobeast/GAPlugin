@@ -33,15 +33,11 @@
     // the next event only. If there is an existing custom variable at the specified
     // index, it will be overwritten by this one.
     //
-    // key = the name of the variable you are logging
     // value = the value of the variable you are logging
-    // index = the numerical index of the key / value pair (base 1)
-    //  Standard accounts support up to 5 custom variables, while premium
-    //  accounts support up to 50. The SDK will accept custom
-    //  variable indices higher than 5, but unless the account is a premium account,
-    //  those custom variables will not be processed.
-    GAPlugin.prototype.setVariable = function(success, fail, key, value, index) {
-        return cordovaRef.exec(success, fail, 'GAPlugin', 'setVariable', [key, value, index]);
+    // index = the numerical index of the dimension to which this variable will be assigned (1 - 20)
+    //  Standard accounts support up to 20 custom dimensions.
+    GAPlugin.prototype.setVariable = function(success, fail, index, value) {
+        return cordovaRef.exec(success, fail, 'GAPlugin', 'setVariable', [index, value]);
     };
     
     GAPlugin.prototype.exit = function(success, fail) {

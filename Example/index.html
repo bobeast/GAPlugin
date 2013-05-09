@@ -5,7 +5,7 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <title>PhoneGap</title>
 		<link rel="stylesheet" href="master.css" type="text/css" media="screen" title="no title">
-		<script type="text/javascript" charset="utf-8" src="cordova-1.5.0.js"></script>
+		<script type="text/javascript" charset="utf-8" src="cordova-2.5.0.js"></script>
 		<script type="text/javascript" src="GAPlugin.js"></script>
 		<script type="text/javascript">
 			var gaPlugin;
@@ -15,8 +15,9 @@
 			}
 		
 			function onDeviceReady() {
-				gaPlugin = window.plugins.gaPlugin;        
-        
+				gaPlugin = window.plugins.gaPlugin;
+				
+				// Note: A request for permission is REQUIRED by google. You probably want to do this just once, though, and remember the answer for subsequent runs.
 				navigator.notification.confirm('GA_PLUGIN would like your permission to collect usage data. No personal or user identifiable data will be collected.', permissionCallback, 'Attention', 'Allow,Deny');
 			}
 		
@@ -41,8 +42,14 @@
 			}
         
 			function VariableButtonClicked() {
-				gaPlugin.setVariable( nativePluginResultHandler, nativePluginErrorHandler, "favoriteColor", "Purple", 1);
-				gaPlugin.trackEvent( nativePluginResultHandler, nativePluginErrorHandler, "Button", "Click", "event with variable", 2);
+				// Set a dimension based on index and value. Make sure you have added a dimension in the GA dashboard to the
+				// default property for the passed in index, and your desired scope. GA allows up to 20 dimensions for a free account
+				gaPlugin.setVariable( nativePluginResultHandler, nativePluginErrorHandler, 1, "Purple");
+
+				// dimensions are are passed to the next event sent to GA. go ahead and fire off an event with the label (key) of your choice
+				// In this example, the label for custom dimension 1 will show up in the dashboard as "favoriteColor". This is much more efficent
+				// than the old custom variable method introduced in V1, (plus you get 20 free dimensions vs 5 free custom variables)
+				gaPlugin.trackEvent( nativePluginResultHandler, nativePluginErrorHandler, "event with variable", "set variable", "favoriteColor", 1);
 			}
         
 			function PageButtonClicked() {

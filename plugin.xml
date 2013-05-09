@@ -2,7 +2,7 @@
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="com.adobe.plugins.GAPlugin"
-    version="1.0.2">
+    version="2.0.0">
 
     <name>GAPlugin</name>
     
@@ -31,11 +31,16 @@
 			<plugin name="GAPlugin" value="GAPlugin"/>
 		</config-file>  
                     
-        <source-file src="GANTracker.h" />
+        <source-file src="GAITransactionItem.h" />
+        <source-file src="GAITransaction.h" />
+        <source-file src="GAITracker.h" />
+        <source-file src="GAITrackedViewController.h" />
+        <source-file src="GAI.h" />
         <source-file src="GAPlugin.h" />
         <source-file src="GAPlugin.m" />
-        <source-file src="libGoogleAnalytics.a" />
-        <framework src="libsqlite3.dylib" />
-        <framework src="CFNetwork.framework" />
+		<source-file src="libGoogleAnalytics.a" />
+        <framework src="libGoogleAnalytics.a" />
+        <framework src="CoreData.framework" />
+        <framework src="SystemConfiguration.framework" />
     </platform>
 </plugin>

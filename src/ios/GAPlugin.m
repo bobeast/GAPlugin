@@ -16,7 +16,13 @@
     NSString    *accountID = [arguments objectAtIndex:0];
     NSInteger   dispatchPeriod = [[arguments objectAtIndex:1] intValue];
 
-    [[GANTracker sharedTracker] startTrackerWithAccountID:accountID dispatchPeriod:dispatchPeriod delegate:self];
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
+    [GAI sharedInstance].dispatchInterval = dispatchPeriod;
+    // Optional: set debug to YES for extra debugging information.
+    //[GAI sharedInstance].debug = YES;
+    // Create tracker instance.
+    [[GAI sharedInstance] trackerWithTrackingId:accountID];
     inited = YES;
     
     [self successWithMessage:[NSString stringWithFormat:@"initGA: accountID = %@; Interval = %d seconds",accountID, dispatchPeriod] toID:callbackId];
@@ -27,7 +33,7 @@
     NSString    *callbackId = [arguments pop];
 
     if (inited)
-		[[GANTracker sharedTracker] stopTracker];
+        [[[GAI sharedInstance] defaultTracker] close];
 	
     [self successWithMessage:@"exitGA" toID:callbackId];
 }
@@ -43,7 +49,7 @@
    
     if (inited)
     {
-        BOOL result = [[GANTracker sharedTracker] trackEvent:category action:eventAction label:eventLabel value:eventValue withError:&error];
+        BOOL result = [[[GAI sharedInstance] defaultTracker] sendEventWithCategory:category withAction:eventAction withLabel:eventLabel withValue:[NSNumber numberWithInt:eventValue]];
         if (result)
             [self successWithMessage:[NSString stringWithFormat:@"trackEvent: category = %@; action = %@; label = %@; value = %d", category, eventAction, eventLabel, eventValue] toID:callbackId];
         else
@@ -61,7 +67,7 @@
     if (inited)
     {
         NSError *error = nil;
-        BOOL    result = [[GANTracker sharedTracker] trackPageview:pageURL withError:&error];
+        BOOL    result = [[[GAI sharedInstance] defaultTracker] sendView:pageURL];
         
         if (result)
     		[self successWithMessage:[NSString stringWithFormat:@"trackPage: url = %@", pageURL] toID:callbackId];
@@ -75,17 +81,16 @@
 - (void) setVariable:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options
 {
     NSString            *callbackId = [arguments pop];
-    NSString            *key = [arguments objectAtIndex:0];
+    NSInteger           index = [[arguments objectAtIndex:0] intValue];
     NSString            *value = [arguments objectAtIndex:1];
-    NSInteger           index = [[arguments objectAtIndex:2] intValue];
     
     if (inited)
     {
         NSError *error = nil;
-        BOOL    result = [[GANTracker sharedTracker] setCustomVariableAtIndex:index name:key value:value withError:&error];
+        BOOL    result = [[[GAI sharedInstance] defaultTracker] setCustom:index dimension:value];
         
         if (result)
-    		[self successWithMessage:[NSString stringWithFormat:@"setVariable: key = %@; value = %@; index = %d", key, value, index] toID:callbackId];
+    		[self successWithMessage:[NSString stringWithFormat:@"setVariable: index = %d, value = %@;", index, value] toID:callbackId];
         else
             [self failWithMessage:@"setVariable failed" toID:callbackId withError:error];
     }
@@ -110,18 +115,8 @@
 
 -(void)dealloc
 {
-    [[GANTracker sharedTracker] stopTracker];
+    [[[GAI sharedInstance] defaultTracker] close];
     [super dealloc];
-}
-
-- (void)hitDispatched:(NSString *)hitString
-{
-    NSLog(@"hitDispatched: %@", hitString);
-}
-
-- (void)trackerDispatchDidComplete:(GANTracker *)tracker eventsDispatched:(NSUInteger)hitsDispatched eventsFailedDispatch:(NSUInteger)hitsFailedDispatch
-{
-    NSLog(@"trackerDispatchDidComplete: hitsDispatched = %u;  hitsFailedDispatch = %u", hitsDispatched, hitsFailedDispatch);
 }
 
 @end
