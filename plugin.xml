@@ -8,6 +8,10 @@
     
     <asset src="www/GAPlugin.js" target="GAPlugin.js" />
     
+	<engines>
+      <engine name="cordova" version=">=2.0.0" />
+    </engines>	
+    
     <!-- android -->
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="plugins">
@@ -20,7 +24,6 @@
                 target-dir="libs" />
     </platform>
     
-    
     <!-- ios -->
     <platform name="ios">
 		<!-- Cordova < 2.3 -->
@@ -31,14 +34,16 @@
 			<plugin name="GAPlugin" value="GAPlugin"/>
 		</config-file>  
                     
-        <source-file src="GAITransactionItem.h" />
-        <source-file src="GAITransaction.h" />
-        <source-file src="GAITracker.h" />
-        <source-file src="GAITrackedViewController.h" />
-        <source-file src="GAI.h" />
-        <source-file src="GAPlugin.h" />
         <source-file src="GAPlugin.m" />
 		<source-file src="libGoogleAnalytics.a" />
+		
+        <header-file src="GAITransactionItem.h" />
+        <header-file src="GAITransaction.h" />
+        <header-file src="GAITracker.h" />
+        <header-file src="GAITrackedViewController.h" />
+        <header-file src="GAI.h" />
+        <header-file src="GAPlugin.h" />
+		
         <framework src="libGoogleAnalytics.a" />
         <framework src="CoreData.framework" />
         <framework src="SystemConfiguration.framework" />
