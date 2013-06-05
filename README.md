@@ -7,29 +7,29 @@ Before you can begin collecting metrics data, you need to set up a GoogleAnalyti
 
 ## Installation:
 
-	Follows the [Cordova Plugin spec](https://github.com/alunny/cordova-plugin-spec), and it works with [Pluginstall](https://github.com/alunny/pluginstall).
+This plugin is based on [plugman](https://github.com/apache/cordova-plugman). to install it to your app,
+simply execute plugman as follows;
 
-	To install it to your app,
-	simply execute pluginstall as follows;
-
-	pluginstall [PLATFORM] [TARGET-PATH] [PLUGIN-PATH]
+	plugman --platform [PLATFORM] --project [TARGET-PATH] --plugin [PLUGIN-PATH]
 
 	where
 		[PLATFORM] = ios or android
 		[TARGET-PATH] = path to folder containing your phonegap project
 		[PLUGIN-PATH] = path to folder containing this plugin
-	
+		
+For additional info, take a look at the [Plugman Documentation](https://github.com/apache/cordova-plugman/blob/master/README.md)
+
 ## Usage
 The plugin creates the object `window.plugins.gaPlugin
 
 After onDeviceReady, create a local var and startup the plugin like so;
 
-var gaPlugin;
+	var gaPlugin;
 
-function onDeviceReady() {
-gaPlugin = window.plugins.gaPlugin;
-gaPlugin.init(successHandler, errorHandler, "UA-12345678-1", 10);
-}
+	function onDeviceReady() {
+		gaPlugin = window.plugins.gaPlugin;
+		gaPlugin.init(successHandler, errorHandler, "UA-12345678-1", 10);
+	}
 
 To get things rolling you need to call init() when your device ready function fires.
 Init takes 4 arguments;
@@ -41,7 +41,9 @@ Init takes 4 arguments;
 		between upload of metrics. When metics are logged, they are enqued
 		and are sent out in batches based on this value. You'll want to
 		avoid setting this value too low, to limit the overhead of sending data.
-Ex;
+
+Example:
+	
 	gaPlugin.init(successHandler, errorHandler, "UA-12345678-1", 10);
 	
 To track an event, call (oddly enough) trackEvent().
@@ -54,7 +56,8 @@ trackEvent takes 6 arguments;
 	5)	eventLabel - A label that describes the event such as Button title or Menu Item name.
 	6)	eventValue - An application defined integer value that can mean whatever you want it to mean.
 	
-Ex;		
+Example:
+	
 	gaPlugin.trackEvent( nativePluginResultHandler, nativePluginErrorHandler, "Button", "Click", "event only", 1);
 
 TrackEvent covers most of what you need, but there may be cases where you want to pass arbitrary data.
@@ -68,7 +71,8 @@ setVariable() accepts 4 arguments;
 	3)	index - the numerical index representing one of your variable slots (1-20).
 	4)	value - Arbitrary string data associated with the index.
 
-Ex;
+Example:
+
 	gaPlugin.setVariable( nativePluginResultHandler, nativePluginErrorHandler, 1, "Purple");
 	
 ####Important:
@@ -82,7 +86,8 @@ trackPage() takes 3 arguments;
 	2)	errorHandler - a function that will be called on error.
 	3)	url - The url of the page hit you are logging.
 
-Ex;
+Example:
+
 	gaPlugin.trackPage( nativePluginResultHandler, nativePluginErrorHandler, "some.url.com");
 	
 Finally, when your app shuts down, you'll want to cleanup after yourself by calling exit();
@@ -90,7 +95,8 @@ exit() accepts 2 arguments;
 
 	1)	resultHandler - a function that will be called on success
 	2)	errorHandler - a function that will be called on error.
-Ex;		
+Example:
+
 	gaPlugin.exit(nativePluginResultHandler, nativePluginErrorHandler);
 	
 This package includes an Example folder containing an index.html file showing how all of this fits together.
