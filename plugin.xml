@@ -2,9 +2,13 @@
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="com.adobe.plugins.GAPlugin"
-    version="2.1.0">
+    version="2.1.1">
 
     <name>GAPlugin</name>
+    
+	<description>
+		This plugin allows you to post usage information to your Google Analytics account.
+	</description>
     
     <asset src="www/GAPlugin.js" target="GAPlugin.js" />
     
