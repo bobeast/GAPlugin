@@ -9,6 +9,8 @@
 	<description>
 		This plugin allows you to post usage information to your Google Analytics account.
 	</description>
+	
+	<license>MIT</license>
     
     <asset src="www/GAPlugin.js" target="GAPlugin.js" />
     
