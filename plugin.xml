@@ -2,10 +2,11 @@
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="com.adobe.plugins.GAPlugin"
-    version="2.1.1">
+    version="2.1.2">
 
     <name>GAPlugin</name>
-    
+	<author>Bob Easterday</author>
+
 	<description>
 		This plugin allows you to post usage information to your Google Analytics account.
 	</description>
@@ -15,7 +16,7 @@
     <asset src="www/GAPlugin.js" target="GAPlugin.js" />
     
 	<engines>
-      <engine name="cordova" version=">=2.0.0" />
+      <engine name="cordova" version="<=3.0.0" />
     </engines>	
     
     <!-- android -->
