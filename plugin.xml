@@ -2,7 +2,7 @@
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="com.phonegap.plugins.GAPlugin"
-    version="2.1.3">
+    version="2.2.0">
 
     <name>GAPlugin</name>
 	<author>Bob Easterday</author>
@@ -16,7 +16,7 @@
     <asset src="www/GAPlugin.js" target="GAPlugin.js" />
     
 	<engines>
-      <engine name="cordova" version="&lt;3.0.0" />
+      <engine name="cordova" version="&gt;=3.0.0" />
     </engines>	
     
     <!-- android -->

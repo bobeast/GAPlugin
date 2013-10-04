@@ -118,7 +118,6 @@
 -(void)dealloc
 {
     [[[GAI sharedInstance] defaultTracker] close];
-    [super dealloc];
 }
 
 @end
