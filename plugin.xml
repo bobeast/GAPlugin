@@ -2,7 +2,7 @@
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="com.phonegap.plugins.GAPlugin"
-    version="2.2.0">
+    version="2.2.1">
 
     <name>GAPlugin</name>
 	<author>Bob Easterday</author>
@@ -22,7 +22,9 @@
     <!-- android -->
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="plugins">
-            <plugin name="GAPlugin" value="com.adobe.plugins.GAPlugin"/>
+			<feature name="GAPlugin" >
+				<param name="android-package" value="com.adobe.plugins.GAPlugin"/>
+			</feature>
         </config-file>
 
         <source-file src="src/android/GAPlugin.java"
@@ -33,12 +35,10 @@
     
     <!-- ios -->
     <platform name="ios">
-		<!-- Cordova < 2.3 -->
-        <plugins-plist key="GAPlugin" string="GAPlugin" />
-                    
-		<!-- Cordova >= 2.3 -->
 		<config-file target="config.xml" parent="plugins">
-			<plugin name="GAPlugin" value="GAPlugin"/>
+			<feature name="GAPlugin">
+				<param name="ios-package" value="GAPlugin"/>
+			</feature>
 		</config-file>  
                     
         <source-file src="src/ios/GAPlugin.m" />
