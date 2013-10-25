@@ -7,17 +7,31 @@ Before you can begin collecting metrics data, you need to set up a GoogleAnalyti
 
 ## Installation:
 
+### local
+
+Add the following feature tag in your config.xml
+
+	<feature name="GAPlugin" >
+		< param name="android-package" value="com.adobe.plugins.GAPlugin"/>
+	</feature>
+
 This plugin is based on [plugman](https://github.com/apache/cordova-plugman). to install it to your app,
 simply execute plugman as follows;
 
-	plugman --platform [PLATFORM] --project [TARGET-PATH] --plugin [PLUGIN-PATH]
+	plugman install --platform [PLATFORM] --project [TARGET-PATH] --plugin [PLUGIN-PATH]
 
 	where
 		[PLATFORM] = ios or android
-		[TARGET-PATH] = path to folder containing your phonegap project
+		[TARGET-PATH] = path to folder containing your xcode project
 		[PLUGIN-PATH] = path to folder containing this plugin
 		
 For additional info, take a look at the [Plugman Documentation](https://github.com/apache/cordova-plugman/blob/master/README.md)
+
+### PhoneGap Build
+
+To use this plugin with PhoneGap Build, add the following plugin reference to your config.xml
+
+	<gap:plugin name="com.adobe.plugins.gaplugin" />
 
 ## Usage
 The plugin creates the object `window.plugins.gaPlugin
