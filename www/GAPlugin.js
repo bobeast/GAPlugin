@@ -59,4 +59,8 @@
             window.plugins.gaPlugin = new GAPlugin();
         }
     }
+
+    if (typeof module != 'undefined' && module.exports) {
+        module.exports = new GAPlugin();
+    }
 })(); /* End of Temporary Scope. */
