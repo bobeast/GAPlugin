@@ -52,7 +52,7 @@
         <header-file src="src/ios/GAITracker.h" />
         <header-file src="src/ios/GAPlugin.h" />
 
-        <framework src="libsql3.dylib" />
+        <framework src="libsqlite3.dylib" />
         <framework src="libz.dylib" />
         <framework src="CoreData.framework" />
         <framework src="SystemConfiguration.framework" />
